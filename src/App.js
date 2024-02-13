@@ -1,5 +1,12 @@
+import dataObj from "./utils/sampleData";
+import Folder from "./components/Folder";
+
 const App = () => {
-  return <div className="text-3xl font-bold">Namaste There :)</div>;
+  return (
+    <div>
+      <Folder dataObj={dataObj} />
+    </div>
+  );
 };
 
 export default App;
