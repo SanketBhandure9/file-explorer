@@ -1,15 +1,24 @@
+import { useState } from "react";
+import useTraverseObject from "../hooks/useTraverseObject";
+import tree from "../utils/sampleData.js";
+
 const AddFileFolderInput = ({
   id,
   addFileOrFolder,
   setAddFileOrFolder,
-  addNewFileFolder,
+  setDataObj,
 }) => {
+  const [inputText, setInputText] = useState(null);
+  const { addNode } = useTraverseObject();
   const toggleAddFileOrFolder = () => {
     setAddFileOrFolder("");
   };
 
-  const inputHandler = (value) => {
-    addNewFileFolder(id, value, addFileOrFolder);
+  const inputHandler = () => {
+    // Add logic to add this in Main Object
+    const finalTree = addNode(tree, id, inputText, addFileOrFolder);
+    setDataObj(finalTree);
+    setAddFileOrFolder("");
   };
 
   return (
@@ -19,10 +28,11 @@ const AddFileFolderInput = ({
         className="bg-gray-50 ml-1 pl-1 border border-2 rounded-md"
         autoFocus
         type="text"
+        onChange={(event) => setInputText(event.target.value)}
         onBlur={toggleAddFileOrFolder}
-        onKeyDown={(event) => {
-          if (event.key === "Enter") {
-            inputHandler(event.target.value);
+        onKeyUp={(event) => {
+          if (event.keyCode === 13) {
+            inputHandler();
           }
         }}
       />
