@@ -18,21 +18,7 @@ const useTraverseObject = () => {
     return { ...tree, items: latestNode };
   }
 
-  function deleteNode(tree, id) {
-    if (id === tree.id) {
-      tree = null;
-      return;
-    }
-
-    let latestNode = [];
-    latestNode = tree.items.map((obj) => {
-      return deleteNode(obj, id);
-    });
-
-    return { ...tree, items: latestNode };
-  }
-
-  return { addNode, deleteNode };
+  return { addNode };
 };
 
 export default useTraverseObject;

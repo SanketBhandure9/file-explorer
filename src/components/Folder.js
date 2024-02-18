@@ -1,7 +1,6 @@
 import { useState } from "react";
 import AddFileFolderButton from "./AddFileFolderButton";
 import AddFileFolderInput from "./AddFileFolderInput";
-import tree from "../utils/sampleData.js";
 
 const Folder = ({ dataObj, setDataObj }) => {
   const { id, name, isFolder, items } = dataObj;
@@ -19,12 +18,9 @@ const Folder = ({ dataObj, setDataObj }) => {
           {(isFolder ? "📁 " : "🗄 ") + name}
         </div>
         <AddFileFolderButton
-          id={id}
           isFolder={isFolder}
           setIsAddFileFolder={setAddFileOrFolder}
           setIsExpand={setIsExpand}
-          dataObj={tree}
-          setDataObj={setDataObj}
         />
       </div>
       {addFileOrFolder.length > 0 && (

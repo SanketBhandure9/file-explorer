@@ -15,7 +15,6 @@ const AddFileFolderInput = ({
   };
 
   const inputHandler = () => {
-    // Add logic to add this in Main Object
     const finalTree = addNode(tree, id, inputText, addFileOrFolder);
     setDataObj(finalTree);
     setAddFileOrFolder("");
